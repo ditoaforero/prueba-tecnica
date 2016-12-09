@@ -8,6 +8,14 @@ var Formulario = (function () {
         this.correoElectronico = correoElectronico;
         this.usuarioGit = usuarioGit;
     }
+    Formulario.prototype.igualar = function (formulario) {
+        this.nombre = formulario.nombre;
+        this.apellido = formulario.apellido;
+        this.cedula = formulario.cedula;
+        this.fechaNacimiento = formulario.fechaNacimiento;
+        this.correoElectronico = formulario.correoElectronico;
+        this.usuarioGit = formulario.usuarioGit;
+    };
     return Formulario;
 }());
 exports.Formulario = Formulario;

@@ -7,4 +7,13 @@ export class Formulario{
         public correoElectronico:string,
         public usuarioGit:string
     ){}
+
+    public igualar(formulario:Formulario){
+        this.nombre = formulario.nombre;
+        this.apellido = formulario.apellido;
+        this.cedula = formulario.cedula;
+        this.fechaNacimiento = formulario.fechaNacimiento;
+        this.correoElectronico = formulario.correoElectronico;
+        this.usuarioGit = formulario.usuarioGit;
+    }
 }

@@ -10,20 +10,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var formulario_1 = require("./models/formulario");
+var core_2 = require('angular2-cookie/core');
 var AppComponent = (function () {
     // Constructor
-    function AppComponent() {
-        this.formulario = new formulario_1.Formulario("Eduardo", "Arevalo", 1018409095, '1986-10-20', "eduardoarevaloco@gmail.com", "ditoaforero");
+    function AppComponent(_cookieService) {
+        this._cookieService = _cookieService;
+        //this.formulario= new Formulario("Eduardo","Arevalo", 1018409095,'1986-10-20',"eduardoarevaloco@gmail.com","ditoaforero");
+        this.formulario = new formulario_1.Formulario("", "", 0, "", "", "");
+        this.formularioCookie = new formulario_1.Formulario("", "", 0, "", "", "");
     }
     AppComponent.prototype.onSubmit = function () {
-        alert(this.formulario);
+        console.log(this.formulario);
+        this._cookieService.putObject("cookie", this.formulario);
+        // TODO: Aqui ya se volvio tipo Object, Averiguar como hacer Serializable de TypeScript Class
+        console.log("Cookie recuperada:");
+        console.log(this._cookieService.getObject("cookie"));
+        // TODO: Averiguar como se realiza un angular.copy en angular 2
+        this.formularioCookie.igualar(this.formulario);
+        console.log("Formulario Cookie:");
+        console.log(this.formularioCookie);
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/views/formulario.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [core_2.CookieService])
     ], AppComponent);
     return AppComponent;
 }());
